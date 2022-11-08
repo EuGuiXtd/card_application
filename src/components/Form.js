@@ -27,6 +27,7 @@ class Form extends React.Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            name="name"
           />
         </label>
         <label
@@ -39,6 +40,7 @@ class Form extends React.Component {
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="description"
           />
         </label>
         <label
@@ -51,6 +53,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="attr1"
           />
         </label>
         <label
@@ -63,6 +66,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="attr2"
           />
         </label>
         <label
@@ -75,6 +79,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="attr3"
           />
         </label>
         <label
@@ -87,6 +92,7 @@ class Form extends React.Component {
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            name="image"
           />
         </label>
         <label
@@ -97,6 +103,7 @@ class Form extends React.Component {
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            name="rarity"
           >
             <option id="id7">normal</option>
             <option id="id7">raro</option>
@@ -113,6 +120,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="trunfo"
           />
         </label>
         <button
@@ -146,9 +154,9 @@ Form.defaultProps = {
 Form.propTypes = {
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
-  cardAttr1: PropTypes.string,
-  cardAttr2: PropTypes.string,
-  cardAttr3: PropTypes.string,
+  cardAttr1: PropTypes.number,
+  cardAttr2: PropTypes.number,
+  cardAttr3: PropTypes.number,
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
