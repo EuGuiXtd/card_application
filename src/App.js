@@ -10,8 +10,9 @@ class App extends React.Component {
     attr2: 0,
     attr3: 0,
     image: '',
-    rarity: '',
+    rarity: 'normal',
     trunfo: false,
+    cards: [],
   };
 
   handleChange = ({ target }) => {
@@ -54,9 +55,60 @@ class App extends React.Component {
     }
   };
 
+  handleClick = () => {
+    const { name,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rarity,
+    } = this.state;
+    const cartas = [];
+    this.setState({
+      name: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rarity: 'normal',
+      cards: cartas,
+    });
+    cartas.push(
+      'Nome: ',
+      name,
+      <br />,
+      <br />,
+      'Descrição: ',
+      description,
+      <br />,
+      <br />,
+      <br />,
+      image,
+      <br />,
+      <br />,
+      <br />,
+      'Ataque: ',
+      attr1,
+      <br />,
+      <br />,
+      'Defesa: ',
+      attr2,
+      <br />,
+      <br />,
+      'Armadura: ',
+      attr3,
+      <br />,
+      <br />,
+      'Raridade: ',
+      rarity,
+    );
+  };
+
   render() {
     const { name, description, image,
-      attr1, attr2, attr3, rarity, trunfo } = this.state;
+      attr1, attr2, attr3, rarity, trunfo, cards } = this.state;
 
     return (
       <div>
@@ -64,6 +116,7 @@ class App extends React.Component {
         <Form
           isSaveButtonDisabled={ this.disabled() }
           onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.handleClick }
           cardName={ name }
           cardDescription={ description }
           cardAttr1={ attr1 }
@@ -82,6 +135,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rarity }
           cardTrunfo={ trunfo }
+          teste={ cards }
         />
       </div>
     );
