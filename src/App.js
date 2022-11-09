@@ -13,6 +13,7 @@ class App extends React.Component {
     rarity: 'normal',
     trunfo: false,
     cards: [],
+    textoTrunfo: '',
   };
 
   handleChange = ({ target }) => {
@@ -63,8 +64,15 @@ class App extends React.Component {
       attr2,
       attr3,
       rarity,
+      cards,
+      trunfo,
     } = this.state;
-    const cartas = [];
+    if (trunfo === true) {
+      this.setState({
+        textoTrunfo: 'Você já tem um Super Trunfo em seu baralho',
+      });
+    }
+    const cartas = Array.from(cards);
     this.setState({
       name: '',
       description: '',
@@ -108,7 +116,7 @@ class App extends React.Component {
 
   render() {
     const { name, description, image,
-      attr1, attr2, attr3, rarity, trunfo, cards } = this.state;
+      attr1, attr2, attr3, rarity, trunfo, cards, textoTrunfo } = this.state;
 
     return (
       <div>
@@ -125,6 +133,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rarity }
           cardTrunfo={ trunfo }
+          hasTrunfo={ textoTrunfo }
         />
         <Card
           cardName={ name }
