@@ -56,6 +56,13 @@ class App extends React.Component {
     }
   };
 
+  ExcluiCarta = ({ target }) => {
+    console.log(target);
+    this.setState({
+      cards: [],
+    });
+  };
+
   handleClick = () => {
     const { name,
       description,
@@ -111,6 +118,15 @@ class App extends React.Component {
       <br />,
       'Raridade: ',
       rarity,
+      <br />,
+      <br />,
+      <button
+        type="button"
+        data-testid="delete-button"
+        onClick={ this.ExcluiCarta }
+      >
+        Excluir
+      </button>,
     );
   };
 
