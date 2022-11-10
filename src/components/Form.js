@@ -15,7 +15,6 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
-    const teste = '?';
     return (
       <form>
         <label
@@ -120,18 +119,22 @@ class Form extends React.Component {
         {
           hasTrunfo
             === ''
-            ? <label htmlFor="id8">
-              Super Trunfo
-              <input
-                id="id8"
-                type="checkbox"
-                data-testid="trunfo-input"
-                checked={ cardTrunfo }
-                onChange={ onInputChange }
-                name="trunfo"
-              />
-            </label> 
-            : <p>Você já tem um Super Trunfo em seu baralho</p>
+            ? (
+              <label htmlFor="id8">
+                Super Trunfo
+                <input
+                  id="id8"
+                  type="checkbox"
+                  data-testid="trunfo-input"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                  name="trunfo"
+                />
+              </label>
+            )
+            : (
+              <div>Você já tem um Super Trunfo em seu baralho</div>
+            )
         }
         <button
           type="button"
