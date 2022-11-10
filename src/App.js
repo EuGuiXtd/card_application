@@ -56,12 +56,24 @@ class App extends React.Component {
     }
   };
 
-  /*  ExcluiCarta = ({ target }) => {
-    console.log(target);
-    this.setState({
-      cards: [],
-    });
-  }; */
+  ExcluiCarta = ({ target }) => {
+    const { cardList } = this.state;
+    const willDeleted = target.getAttribute('key-card');
+    const thisTrunfo = target.getAttribute('type-card');
+    cardList.splice(willDeleted, 1);
+    console.log(thisTrunfo);
+    if (thisTrunfo === 'trunfo') {
+      console.log('trunfo');
+      this.setState({
+        cardList,
+        textoTrunfo: '',
+        trunfo: false,
+      });
+    } else {
+      this.setState({
+        cardList });
+    }
+  };
 
   handleClick = () => {
     const { trunfo,
@@ -72,7 +84,8 @@ class App extends React.Component {
       attr3,
       name,
       rarity,
-      cardList } = this.state;
+      cardList,
+      textoTrunfo } = this.state;
     if (trunfo === true) {
       this.setState({
         textoTrunfo: 'Você já tem um Super Trunfo em seu baralho',
@@ -95,7 +108,9 @@ class App extends React.Component {
       attr3,
       image,
       rarity,
-      trunfo,
+      trunfo: textoTrunfo
+      === 'Você já tem um Super Trunfo em seu baralho'
+        ? false : trunfo,
     };
     cardList.push(baralho);
     console.log(cardList);
@@ -133,17 +148,30 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
         />
         {cardList.map((x, id) => (
-          <Card
-            key={ id }
-            cardName={ x.name }
-            cardDescription={ x.description }
-            cardAttr1={ x.attr1 }
-            cardAttr2={ x.attr2 }
-            cardAttr3={ x.attr3 }
-            cardImage={ x.image }
-            cardRare={ x.rarity }
-            cardTrunfo={ x.trunfo }
-          />))}
+          <>
+            <Card
+              key={ id }
+              cardName={ x.name }
+              cardDescription={ x.description }
+              cardAttr1={ x.attr1 }
+              cardAttr2={ x.attr2 }
+              cardAttr3={ x.attr3 }
+              cardImage={ x.image }
+              cardRare={ x.rarity }
+              cardTrunfo={ x.trunfo }
+            />
+            {console.log(x.trunfo)}
+            <button
+              data-testid="delete-button"
+              type="button"
+              key-card={ id }
+              type-card={ x.trunfo ? 'trunfo' : 'não trunfo' }
+              onClick={ this.ExcluiCarta }
+            >
+              Excluir
+            </button>
+
+          </>))}
 
       </div>
     );
