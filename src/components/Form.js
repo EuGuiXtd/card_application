@@ -118,8 +118,11 @@ class Form extends React.Component {
         </label>
         {
           hasTrunfo
-            === ''
+            === 'Você já tem um Super Trunfo em seu baralho'
             ? (
+              <div>Você já tem um Super Trunfo em seu baralho</div>
+            )
+            : (
               <label htmlFor="id8">
                 Super Trunfo
                 <input
@@ -131,9 +134,6 @@ class Form extends React.Component {
                   name="trunfo"
                 />
               </label>
-            )
-            : (
-              <div>Você já tem um Super Trunfo em seu baralho</div>
             )
         }
         <button

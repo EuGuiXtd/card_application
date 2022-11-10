@@ -11,7 +11,6 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      teste,
     } = this.props;
     return (
       <section>
@@ -22,7 +21,6 @@ class Card extends React.Component {
         <h3 data-testid="attr2-card">{cardAttr2}</h3>
         <h3 data-testid="attr3-card">{cardAttr3}</h3>
         <p data-testid="rare-card">{cardRare}</p>
-        <p>{teste}</p>
         {
           cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : null
         }
@@ -39,12 +37,10 @@ Card.defaultProps = {
   cardImage: '',
   cardRare: '',
   cardTrunfo: false,
-  teste: '',
 };
 
 Card.propTypes = {
   cardName: PropTypes.string,
-  teste: PropTypes.string,
   cardDescription: PropTypes.string,
   cardAttr1: PropTypes.number,
   cardAttr2: PropTypes.number,

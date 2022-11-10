@@ -12,7 +12,7 @@ class App extends React.Component {
     image: '',
     rarity: 'normal',
     trunfo: false,
-    cards: [],
+    cardList: [],
     textoTrunfo: '',
   };
 
@@ -56,30 +56,28 @@ class App extends React.Component {
     }
   };
 
-  ExcluiCarta = ({ target }) => {
+  /*  ExcluiCarta = ({ target }) => {
     console.log(target);
     this.setState({
       cards: [],
     });
-  };
+  }; */
 
   handleClick = () => {
-    const { name,
+    const { trunfo,
       description,
       image,
       attr1,
       attr2,
       attr3,
+      name,
       rarity,
-      cards,
-      trunfo,
-    } = this.state;
+      cardList } = this.state;
     if (trunfo === true) {
       this.setState({
         textoTrunfo: 'Você já tem um Super Trunfo em seu baralho',
       });
     }
-    const cartas = Array.from(cards);
     this.setState({
       name: '',
       description: '',
@@ -88,51 +86,24 @@ class App extends React.Component {
       attr3: 0,
       image: '',
       rarity: 'normal',
-      cards: cartas,
     });
-    cartas.push(
-      'Nome: ',
+    const baralho = {
       name,
-      <br />,
-      <br />,
-      'Descrição: ',
       description,
-      <br />,
-      <br />,
-      <br />,
-      image,
-      <br />,
-      <br />,
-      <br />,
-      'Ataque: ',
       attr1,
-      <br />,
-      <br />,
-      'Defesa: ',
       attr2,
-      <br />,
-      <br />,
-      'Armadura: ',
       attr3,
-      <br />,
-      <br />,
-      'Raridade: ',
+      image,
       rarity,
-      <br />,
-      <br />,
-      <button
-        type="button"
-        data-testid="delete-button"
-        onClick={ this.ExcluiCarta }
-      >
-        Excluir
-      </button>,
-    );
+      trunfo,
+    };
+    cardList.push(baralho);
+    console.log(cardList);
   };
 
   render() {
     const { name, description, image,
-      attr1, attr2, attr3, rarity, trunfo, cards, textoTrunfo } = this.state;
+      attr1, attr2, attr3, rarity, trunfo, cardList, textoTrunfo } = this.state;
 
     return (
       <div>
@@ -160,8 +131,20 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rarity }
           cardTrunfo={ trunfo }
-          teste={ cards }
         />
+        {cardList.map((x, id) => (
+          <Card
+            key={ id }
+            cardName={ x.name }
+            cardDescription={ x.description }
+            cardAttr1={ x.attr1 }
+            cardAttr2={ x.attr2 }
+            cardAttr3={ x.attr3 }
+            cardImage={ x.image }
+            cardRare={ x.rarity }
+            cardTrunfo={ x.trunfo }
+          />))}
+
       </div>
     );
   }
